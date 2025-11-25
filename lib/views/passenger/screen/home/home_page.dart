@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hello_bus/views/auth/bus_details_page1.dart';
+import 'package:hello_bus/views/passenger/screen/bus_details_page1.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:hello_bus/core/theme/colors.dart';
 

@@ -104,4 +104,22 @@ class AppColors {
       offset: const Offset(0, 4),
     ),
   ];
+
+  // Cancel booking conformation screen
+
+  static const backgroundCan = Color(0xffF4F5F7);
+  static const textDarkCan = Color(0xff1E1E1E);
+  static const greyTextCan = Color(0xff7A7A7A);
+
+  static const primaryBlue = Color(0xff237BFF);
+
+  static const redButton = Color(0xffD91C3C);
+
+  static final softShadow2 = [
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.06),
+      blurRadius: 12,
+      offset: const Offset(0, 4),
+    ),
+  ];
 }

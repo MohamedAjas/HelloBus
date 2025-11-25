@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_bus/views/auth/seat_select_screen.dart';
-import 'package:hello_bus/views/home/home_page.dart';
+import 'package:hello_bus/views/passenger/screen/seat_select_screen.dart';
+import 'package:hello_bus/views/passenger/screen/home/home_page.dart';
 
 
 class BusDetailsPage extends StatefulWidget {

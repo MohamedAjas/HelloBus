@@ -12,7 +12,7 @@ final ThemeData helloBusLoginTheme = ThemeData(
 
   colorScheme: const ColorScheme.light(
     primary: AppColors.primary,
-    background: AppColors.backgroundLight,
+    surface: AppColors.backgroundLight,
   ),
 
   inputDecorationTheme: InputDecorationTheme(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'views/auth/hello_bus_login_page.dart';
 import 'views/auth/registration_page.dart';
-import 'views/auth/splash_screen.dart';
+import 'views/passenger/screen/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

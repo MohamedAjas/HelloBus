@@ -7,7 +7,7 @@ import 'package:hello_bus/core/theme/app_theme_login.dart';
 import 'package:hello_bus/core/theme/colors.dart';
 import 'package:hello_bus/core/theme/decorations.dart';
 import 'package:hello_bus/widgets/or_divider.dart';
-import 'package:hello_bus/views/home/home_page.dart'; // <-- Import Home Page
+import 'package:hello_bus/views/passenger/screen/home/home_page.dart'; // <-- Import Home Page
 
 class HelloBusLoginPage extends StatefulWidget {
   const HelloBusLoginPage({super.key});

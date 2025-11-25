@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_bus/core/theme/colors.dart';
+import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
   const SeatSelectionScreen({super.key});
@@ -75,8 +76,10 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text("Route: Colombo → Kandy",
-                          style: TextStyle(fontSize: 14)),
+                      Text(
+                        "Route: Colombo → Kandy",
+                        style: TextStyle(fontSize: 14),
+                      ),
                       SizedBox(height: 6),
                       Text(
                         "Date: 24 Oct",
@@ -139,7 +142,6 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                               ),
 
                               const SizedBox(width: 35), // aisle
-
                               /// RIGHT 2 seats
                               Row(
                                 children: seatLayoutRight[index]
@@ -205,7 +207,16 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: selectedSeats.isEmpty ? null : () {},
+                  onPressed: selectedSeats.isEmpty
+                      ? null
+                      : () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CancelBookingScreen(),
+                            ),
+                          );
+                        },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primarySeat,
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -235,16 +246,14 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
     Color seatColor = isBooked
         ? AppColors.booked
         : isSelected
-            ? AppColors.primarySeat
-            : AppColors.available;
+        ? AppColors.primarySeat
+        : AppColors.available;
 
     return GestureDetector(
       onTap: () {
         if (isBooked) return;
         setState(() {
-          isSelected
-              ? selectedSeats.remove(seat)
-              : selectedSeats.add(seat);
+          isSelected ? selectedSeats.remove(seat) : selectedSeats.add(seat);
         });
       },
       child: AnimatedContainer(
@@ -259,10 +268,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
         ),
         child: Text(
           seat,
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
       ),
     );
