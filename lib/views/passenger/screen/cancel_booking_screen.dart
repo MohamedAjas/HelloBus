@@ -104,7 +104,7 @@ class CancelBookingScreen extends StatelessWidget {
                         backgroundColor: AppColors.redButton,
                         padding: EdgeInsets.symmetric(vertical: h * 0.022),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(14),
                         ),
                       ),
                       child: const Text(
@@ -115,7 +115,7 @@ class CancelBookingScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: h * 0.03),
+                SizedBox(height: h * 0.01),
 
                 // BACK
                 GestureDetector(
@@ -123,7 +123,7 @@ class CancelBookingScreen extends StatelessWidget {
                   child: const Text(
                     "Never Mind",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppColors.textDarkCan,
                     ),
