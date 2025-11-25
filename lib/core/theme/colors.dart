@@ -122,4 +122,29 @@ class AppColors {
       offset: const Offset(0, 4),
     ),
   ];
+
+  // Cancel Confiormation Dialog Box
+  // Buttons
+  static const Color primaryD = Color(0xFF4CAF50); // Confirm button
+  static const Color neutralButton = Color(0xFFE0E0E0); // Light gray button
+
+  // Background / Cards
+  static const Color cardLight = Colors.white;
+
+  // Text Colors
+  static const Color textDarkD = Color(0xFF1A1A1A); // Dark text
+  static const Color textLightD = Color(0xFF6B7280); // Gray text
+
+  // Negative values (cancellation fee)
+  static const Color negativeFee = Color(0xFFE53E3E); // Red
+
+  // Soft shadow for UI components
+  List<BoxShadow> buttonShadow = [
+    BoxShadow(
+      color: Colors.black12,
+      blurRadius: 8,
+      spreadRadius: 2,
+      offset: Offset(0, 4),
+    ),
+  ];
 }
