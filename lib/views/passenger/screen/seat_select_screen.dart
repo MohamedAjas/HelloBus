@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_bus/core/theme/colors.dart';
-import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
+//import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
+import 'package:hello_bus/views/passenger/screen/payment_page.dart';
 
 class SeatSelectionScreen extends StatefulWidget {
   const SeatSelectionScreen({super.key});
@@ -213,7 +214,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CancelBookingScreen(),
+                              builder: (context) => const PaymentScreen(),
                             ),
                           );
                         },
