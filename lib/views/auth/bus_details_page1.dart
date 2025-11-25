@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_bus/views/auth/seat_select_screen.dart';
+import 'package:hello_bus/views/home/home_page.dart';
+
 
 class BusDetailsPage extends StatefulWidget {
   const BusDetailsPage({super.key});
@@ -22,7 +24,15 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2,
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon:  Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context, 
+              MaterialPageRoute(builder: (_) => const HomePage()),
+            );
+          },
+          ),
         title: const Text(
           "Badulla to Kandy",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
