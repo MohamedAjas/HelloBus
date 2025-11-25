@@ -162,8 +162,11 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                 _amenityItem(Icons.wifi, "Wi-Fi"),
                 _amenityItem(Icons.ac_unit, "AC"),
                 _amenityItem(Icons.bolt, "Charging"),
-                _amenityItem(Icons.airline_seat_recline_normal, "Seat Belt"),
-                _amenityItem(Icons.gps_fixed, "GPS"),
+                _amenityItem(Icons.tv, "TV"),
+                _amenityItem(Icons.videocam, "Camera"),
+              
+               //_amenityItem(Icons.airline_seat_recline_extra, "Seat Adjustment"),
+               
               ],
             ),
 
