@@ -21,8 +21,6 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
       "to": "Kandy",
       "date": "Mon, 28 Oct",
       "time": "10:30 AM",
-      "buttonText": "View Ticket",
-      "buttonColor": const Color(0xFF00D05F),
     },
   ];
 
@@ -62,7 +60,6 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
         ),
         centerTitle: true,
       ),
-
       body: Column(
         children: [
           Container(
@@ -79,7 +76,6 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
               ],
             ),
           ),
-
           Expanded(
             child: TabBarView(
               controller: tabController,
@@ -117,28 +113,60 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
               to: trip["to"],
               date: trip["date"],
               time: trip["time"],
-              buttonText: "View Ticket",
-              buttonColor: const Color(0xFF00D05F),
+              buttonText: "", // remove default button
+              buttonColor: Colors.transparent,
             ),
 
-            // ====== CANCEL BUTTON (Only in Upcoming) ======
-            SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    cancelledList.add(trip);
-                    upcomingList.removeAt(index);
-                  });
-                },
-                child: const Text(
-                  "Cancel Trip",
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold
+            // ====== Row Buttons: View Ticket & Cancel Trip ======
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // View Ticket action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF00D05F),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      "View Ticket",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        cancelledList.add(trip);
+                        upcomingList.removeAt(index);
+                      });
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.red),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      "Cancel Trip",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 10),
           ],
@@ -276,8 +304,8 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                 color: status == "Cancelled"
                     ? Colors.red
                     : status == "Completed"
-                    ? Colors.green
-                    : Colors.orange,
+                        ? Colors.green
+                        : Colors.orange,
               ),
               const SizedBox(width: 6),
               Text(
@@ -286,8 +314,8 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                   color: status == "Cancelled"
                       ? Colors.red
                       : status == "Completed"
-                      ? Colors.green
-                      : Colors.orange,
+                          ? Colors.green
+                          : Colors.orange,
                 ),
               ),
               const Spacer(),
@@ -333,23 +361,23 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
           ),
 
           const SizedBox(height: 12),
-          
 
-          // Button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: buttonColor,
-                foregroundColor: textColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+          // Only show button if buttonText is not empty (Completed/Cancelled)
+          if (buttonText.isNotEmpty)
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: buttonColor,
+                  foregroundColor: textColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                 ),
+                onPressed: () {},
+                child: Text(buttonText),
               ),
-              onPressed: () {},
-              child: Text(buttonText),
             ),
-          )
         ],
       ),
     );
