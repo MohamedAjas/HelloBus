@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_bus/views/passenger/screen/eticket_screen.dart';
 
 class BookingHistoryPage extends StatefulWidget {
   const BookingHistoryPage({super.key});
@@ -53,7 +54,9 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black,),
+          onPressed: () => Navigator.pop(context),),
         title: const Text(
           "Booking History",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -124,6 +127,12 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                   child: ElevatedButton(
                     onPressed: () {
                       // View Ticket action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const E_TicketPage(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF00D05F),
