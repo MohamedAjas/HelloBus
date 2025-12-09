@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_bus/core/theme/colors.dart';
+import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
 import 'package:hello_bus/views/passenger/screen/eticket_screen.dart';
 
 class BookingHistoryPage extends StatefulWidget {
@@ -35,9 +37,9 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
       "date": "Mon, 20 Oct",
       "time": "07:00 AM",
       "buttonText": "Leave Review",
-      "buttonColor": const Color(0xFF00D05F),
+      "buttonColor": AppColors.primary,
       "textColor": Colors.white,
-    }
+    },
   ];
 
   List<Map<String, dynamic>> cancelledList = [];
@@ -55,8 +57,9 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black,),
-          onPressed: () => Navigator.pop(context),),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: const Text(
           "Booking History",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -69,9 +72,9 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
             color: Colors.white,
             child: TabBar(
               controller: tabController,
-              labelColor: Colors.green,
+              labelColor: AppColors.primary,
               unselectedLabelColor: Colors.black,
-              indicatorColor: Colors.green,
+              indicatorColor: AppColors.primary,
               tabs: const [
                 Tab(text: "Upcoming"),
                 Tab(text: "Completed"),
@@ -82,11 +85,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
           Expanded(
             child: TabBarView(
               controller: tabController,
-              children: [
-                upcomingTab(),
-                completedTab(),
-                cancelledTab(),
-              ],
+              children: [upcomingTab(), completedTab(), cancelledTab()],
             ),
           ),
         ],
@@ -135,7 +134,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF00D05F),
+                      backgroundColor: AppColors.primary,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -154,10 +153,13 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      setState(() {
-                        cancelledList.add(trip);
-                        upcomingList.removeAt(index);
-                      });
+                      // Navigate to cancel_booking_screen.dart
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CancelBookingScreen(),
+                        ),
+                      );
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.red),
@@ -248,10 +250,16 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.calendar_today_rounded, size: 90, color: Colors.blueGrey),
+            const Icon(
+              Icons.calendar_today_rounded,
+              size: 90,
+              color: Colors.blueGrey,
+            ),
             const SizedBox(height: 12),
-            Text(title,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 8),
             const Text(
               "Ready to plan your next adventure? Book a trip to see your tickets here.",
@@ -263,16 +271,19 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00D05F),
+                  backgroundColor: AppColors.primary,
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
                 onPressed: () {},
-                child: const Text("Book a New Trip", style: TextStyle(color: Colors.white)),
+                child: const Text(
+                  "Book a New Trip",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -299,7 +310,7 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8)
+          BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 8),
         ],
       ),
       child: Column(
@@ -313,8 +324,8 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                 color: status == "Cancelled"
                     ? Colors.red
                     : status == "Completed"
-                        ? Colors.green
-                        : Colors.orange,
+                    ? AppColors.primary
+                    : Colors.orange,
               ),
               const SizedBox(width: 6),
               Text(
@@ -323,8 +334,8 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
                   color: status == "Cancelled"
                       ? Colors.red
                       : status == "Completed"
-                          ? Colors.green
-                          : Colors.orange,
+                      ? AppColors.primary
+                      : Colors.orange,
                 ),
               ),
               const Spacer(),
@@ -395,9 +406,14 @@ class _BookingHistoryPageState extends State<BookingHistoryPage>
   Widget cityWidget(String shortName, String city) {
     return Column(
       children: [
-        Text(shortName,
-            style: const TextStyle(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black)),
+        Text(
+          shortName,
+          style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
         Text(city, style: const TextStyle(color: Colors.grey)),
       ],
     );

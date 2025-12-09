@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_bus/core/theme/colors.dart';
+import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
 
 class CancelBookingScreen extends StatelessWidget {
   const CancelBookingScreen({super.key});
@@ -18,9 +19,38 @@ class CancelBookingScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: h * 0.03),
             child: Column(
               children: [
+                // ===== BACK BUTTON =====
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: w * 0.04),
+                  child: Row(
+                    children: [
+                      MouseRegion(
+                        cursor:
+                            SystemMouseCursors.click, // Changes cursor to hand
+                        child: GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: AppColors.softShadow,
+                            ),
+                            child: const Icon(
+                              Icons.arrow_back,
+                              color: AppColors.textDarkCan,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
                 SizedBox(height: h * 0.03),
 
-                // TITLE
+                // ===== TITLE =====
                 const Text(
                   "Are you sure you want\nto cancel?",
                   textAlign: TextAlign.center,
@@ -34,7 +64,7 @@ class CancelBookingScreen extends StatelessWidget {
 
                 SizedBox(height: h * 0.04),
 
-                // CARD
+                // ===== CARD =====
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: w * 0.05),
                   child: AnimatedContainer(
@@ -77,7 +107,7 @@ class CancelBookingScreen extends StatelessWidget {
 
                 SizedBox(height: h * 0.03),
 
-                // NOTE
+                // ===== NOTE =====
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32),
                   child: Text(
@@ -93,13 +123,22 @@ class CancelBookingScreen extends StatelessWidget {
 
                 SizedBox(height: h * 0.05),
 
-                // CANCEL BUTTON
+                // ===== CANCEL BUTTON =====
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: w * 0.06),
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => _showCancelAnimation(context),
+                      onPressed: () {
+                        // Show the cancellation confirmation dialog
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const CancellationConfirmationDialog(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.redButton,
                         padding: EdgeInsets.symmetric(vertical: h * 0.022),
@@ -116,19 +155,6 @@ class CancelBookingScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: h * 0.01),
-
-                // BACK
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Text(
-                    "Never Mind",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textDarkCan,
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
@@ -137,7 +163,7 @@ class CancelBookingScreen extends StatelessWidget {
     );
   }
 
-  // REUSABLE TILE WIDGET
+  // ===== REUSABLE INFO TILE =====
   Widget infoTile({
     required IconData icon,
     required String title,
@@ -175,51 +201,9 @@ class CancelBookingScreen extends StatelessWidget {
     );
   }
 
+  // ===== DIVIDER =====
   Widget divider() => const Padding(
     padding: EdgeInsets.symmetric(vertical: 18),
     child: Divider(thickness: 1, color: Color(0xffE5E5E5)),
   );
-
-  // ANIMATION POPUP WHEN CLICKING CANCEL
-  void _showCancelAnimation(BuildContext context) {
-    showGeneralDialog(
-      context: context,
-      barrierDismissible: false,
-      barrierColor: Colors.black.withValues(alpha: 0.4),
-      transitionDuration: const Duration(milliseconds: 400),
-      pageBuilder: (_, __, ___) {
-        return const SizedBox.shrink();
-      },
-      transitionBuilder: (context, animation, secondaryAnimation, child) {
-        return ScaleTransition(
-          scale: CurvedAnimation(parent: animation, curve: Curves.easeOutBack),
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.all(26),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(22),
-                boxShadow: AppColors.softShadow,
-              ),
-              child: const Text(
-                "Booking Cancelled!",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.redButton,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-
-    Future.delayed(const Duration(seconds: 2), () {
-      if (!context.mounted) return; // <-- SAFE USE
-
-      Navigator.pop(context); // close popup
-      if (context.mounted) Navigator.pop(context); // go back screen
-    });
-  }
 }

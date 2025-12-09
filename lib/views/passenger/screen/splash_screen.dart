@@ -147,7 +147,7 @@ class _HelloBusSplashScreenState extends State<HelloBusSplashScreen>
                 child: Column(
                   children: [
                     Text(
-                      "We're going on a trip.",
+                      "We're going on a travel.",
                       style: GoogleFonts.plusJakartaSans(
                         fontSize: 40,
                         fontWeight: FontWeight.w800,

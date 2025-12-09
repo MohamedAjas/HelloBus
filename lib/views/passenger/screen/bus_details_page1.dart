@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_bus/core/theme/colors.dart';
 import 'package:hello_bus/views/passenger/screen/seat_select_screen.dart';
 import 'package:hello_bus/views/passenger/screen/home/home_page.dart';
 
@@ -270,7 +271,7 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
         padding: const EdgeInsets.all(16),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.green,
+            backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             minimumSize: const Size(double.infinity, 55),
             shape: RoundedRectangleBorder(
