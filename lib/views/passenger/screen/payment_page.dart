@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_bus/core/theme/colors.dart';
 import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
 //import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
 
@@ -118,7 +119,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             MaterialButton(
               minWidth: double.infinity,
               height: 55,
-              color: const Color(0xFF00D05F),
+              color: AppColors.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18),
               ),
@@ -200,7 +201,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           color: selected ? Colors.green.shade50 : Colors.white,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: selected ? Colors.green : Colors.grey.shade300,
+            color: selected ? AppColors.primary : Colors.grey.shade300,
           ),
         ),
         child: Row(
@@ -208,7 +209,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             Icon(
               asset,
               size: 28,
-              color: selected ? Colors.green : Colors.black,
+              color: selected ? AppColors.primary : Colors.black,
             ),
             const SizedBox(width: 12),
             Text(
@@ -218,7 +219,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             const Spacer(),
             Icon(
               selected ? Icons.radio_button_checked : Icons.radio_button_off,
-              color: selected ? Colors.green : Colors.grey,
+              color: selected ? AppColors.primary : Colors.grey,
             ),
           ],
         ),

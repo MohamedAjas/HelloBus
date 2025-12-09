@@ -105,7 +105,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                 children: [
                   legendItem(AppColors.available, "Available"),
                   legendItem(AppColors.booked, "Booked"),
-                  legendItem(AppColors.primarySeat, "Selected"),
+                  legendItem(AppColors.primary, "Selected"),
                 ],
               ),
             ),
@@ -219,7 +219,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
                           );
                         },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primarySeat,
+                    backgroundColor: AppColors.primary,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -247,7 +247,7 @@ class _SeatSelectionScreenState extends State<SeatSelectionScreen> {
     Color seatColor = isBooked
         ? AppColors.booked
         : isSelected
-        ? AppColors.primarySeat
+        ? AppColors.primary
         : AppColors.available;
 
     return GestureDetector(

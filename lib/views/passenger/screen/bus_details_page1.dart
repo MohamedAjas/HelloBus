@@ -197,7 +197,7 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                   Text(
                     "View all",
                     style: TextStyle(
-                      color: Colors.green,
+                      color: AppColors.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -252,7 +252,7 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _legend(Colors.green.shade200, "Available"),
+                      _legend(AppColors.primary, "Available"),
                       _legend(Colors.grey.shade400, "Booked"),
                       _legend(Colors.blue.shade200, "Selected"),
                     ],
@@ -341,7 +341,7 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
     } else if (seatStatus[index] == 2) {
       color = Colors.blue.shade200; // selected
     } else {
-      color = Colors.green.shade200; // available
+      color = AppColors.primary; // available
     }
 
     return GestureDetector(
