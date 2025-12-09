@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hello_bus/core/theme/colors.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:hello_bus/views/passenger/screen/home/bookinghistory_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -42,7 +43,19 @@ class BottomNavBar extends StatelessWidget {
 
     return Expanded(
       child: InkWell(
-        onTap: () => onItemTapped(index),
+        onTap: () {
+          onItemTapped(index);
+
+          //  Navigate to Booking History when Bookings tab clicked
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BookingHistoryPage(),
+              ),
+            );
+          }
+        },
         borderRadius: BorderRadius.circular(8),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
