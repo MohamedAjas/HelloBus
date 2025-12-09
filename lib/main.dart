@@ -23,7 +23,7 @@ class HelloBusApp extends StatelessWidget {
       title: "Hello Bus",
       theme: helloBusTheme,
 
-      // APP START SCREEN
+      /// APP START SCREEN
       home: const HelloBusSplashScreen(),
 
       // APP ROUTES
