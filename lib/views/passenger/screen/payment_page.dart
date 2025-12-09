@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
+import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
+//import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -126,7 +127,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   context: context,
                   barrierDismissible:
                       false, // user cannot close by tapping outside
-                  builder: (context) => const CancellationConfirmationDialog(),
+                  builder: (context) => const CancelBookingScreen(),
                 );
               },
               child: const Text(

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
+
+// AUTH SCREENS
 import 'views/auth/hello_bus_login_page.dart';
 import 'views/auth/registration_page.dart';
+
+// SPLASH SCREEN
 import 'views/passenger/screen/splash_screen.dart';
 
 void main() {
@@ -18,22 +22,14 @@ class HelloBusApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Hello Bus",
       theme: helloBusTheme,
+
+      // APP START SCREEN
       home: const HelloBusSplashScreen(),
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/login':
-            return MaterialPageRoute(
-              builder: (_) => const HelloBusLoginPage(),
-              settings: settings,
-            );
-          case '/register':
-            return MaterialPageRoute(
-              builder: (_) => const HelloBusRegistrationPage(),
-              settings: settings,
-            );
-          default:
-            return null;
-        }
+
+      // APP ROUTES
+      routes: {
+        '/login': (_) => const HelloBusLoginPage(),
+        '/register': (_) => const HelloBusRegistrationPage(),
       },
     );
   }
