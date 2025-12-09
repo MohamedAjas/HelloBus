@@ -14,7 +14,7 @@ class BusDetailsPage extends StatefulWidget {
 class _BusDetailsPageState extends State<BusDetailsPage> {
   int? selectedSeat;
 
-  // 0 = available, 1 = booked, 2 = selected
+  /// 0 = available, 1 = booked, 2 = selected
   final List<int> seatStatus = [0, 0, 0, 1, 1, 0, 0, 0, 2, 1, 0, 2];
 
   @override
