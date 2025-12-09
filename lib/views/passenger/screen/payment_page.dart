@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_bus/core/theme/colors.dart';
 import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
 //import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
+import 'package:hello_bus/views/passenger/screen/home/home_page.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -124,12 +125,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 borderRadius: BorderRadius.circular(18),
               ),
               onPressed: () {
-                showDialog(
-                  context: context,
-                  barrierDismissible:
-                      false, // user cannot close by tapping outside
-                  builder: (context) => const CancelBookingScreen(),
-                );
+                showPaymentSuccessPopup(context); 
               },
               child: const Text(
                 "Pay LKR 2,400.00",
@@ -279,3 +275,78 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 }
+
+//popup window for payment success
+void showPaymentSuccessPopup(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      Future.delayed(const Duration(milliseconds: 3000), () {
+        Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      ); 
+      });
+
+      return Dialog(
+        backgroundColor: const Color(0xFF0E0E0E),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Success Icon
+              Container(
+                padding: const EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.green.withOpacity(0.15),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.green,
+                  ),
+                  child: const Icon(
+                    Icons.check,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              const Text(
+                "Payment Successful!",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 10),
+
+              const Text(
+                "Your payment has been processed successfully.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
