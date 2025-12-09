@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_bus/core/theme/colors.dart';
-import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
+//import 'package:hello_bus/views/passenger/screen/cancel_booking_screen.dart';
 //import 'package:hello_bus/views/passenger/screen/cancellation_confirmation_dialog.dart';
 import 'package:hello_bus/views/passenger/screen/home/home_page.dart';
 
@@ -304,7 +304,7 @@ void showPaymentSuccessPopup(BuildContext context) {
                 padding: const EdgeInsets.all(25),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.green.withOpacity(0.15),
+                  color: Colors.green.withValues(alpha: 0.15),
                 ),
                 child: Container(
                   padding: const EdgeInsets.all(20),
